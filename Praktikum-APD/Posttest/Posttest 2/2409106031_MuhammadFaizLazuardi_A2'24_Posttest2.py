@@ -21,3 +21,7 @@ print(nama,"dengan NIM",nim,"ingin membeli beras seharga RP",harga_beras,".",
       "\nJika dia membeli beras Mawar ia harus membayar RP",hsdm,"Setelah mendapat diskon 11%.",
       "\nJika dia membeli beras Sania ia harus membayar RP",hsds,"Setelah mendapat diskon 14%.",
       "\nJika dia membeli beras Maknyus ia harus membayar RP",hsdmks,"Setelah mendapat diskon 17%.") 
+
+# test lagi
+a = "test"
+print(a)
