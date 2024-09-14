@@ -12,7 +12,6 @@ dm = harga_beras * f
 ds = harga_beras * g
 dmks = harga_beras * h
 
-
 # menghitung harga beras setelah diskon
 hsdm =int(harga_beras - dm)
 hsds = int(harga_beras - ds)
