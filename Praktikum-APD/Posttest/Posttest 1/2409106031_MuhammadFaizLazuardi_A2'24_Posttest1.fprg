@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="2409106031"/>
+        <attribute name="authors" value="M. Faiz Lazuardi"/>
+        <attribute name="about" value="Percobaan"/>
+        <attribute name="saved" value="2024-09-14 07:38:03 PM"/>
+        <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0xNDswNzozODowMyBQTTsxNzsyODE5"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="d, f, v, g, h" type="Real" array="False" size=""/>
+            <comment text="d = Jumlah Pinjaman &#13;&#10;f = Lama Cicilan &#13;&#10;v = Bunga Per Tahun &#13;&#10;g = Bunga Per Bulan &#13;&#10;h = Cicilan Per Bulan "/>
+            <output expression="&quot;Masukkan Jumlah Pinjaman&quot;" newline="True"/>
+            <input variable="d"/>
+            <output expression="&quot;Masukkan lama cicilan dalam tahun&quot;" newline="True"/>
+            <input variable="f"/>
+            <if expression="f = 1">
+                <then>
+                    <assign variable="v" expression="0.07"/>
+                </then>
+                <else>
+                    <if expression="f = 2">
+                        <then>
+                            <assign variable="v" expression="0.13"/>
+                        </then>
+                        <else>
+                            <if expression="f = 3">
+                                <then>
+                                    <assign variable="v" expression="0.19"/>
+                                </then>
+                                <else/>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="g" expression="(v / 12)* d"/>
+            <assign variable="h" expression="(d + g) / (f * 12)"/>
+            <output expression="&quot;Cicilan Per Bulan =&quot;" newline="True"/>
+            <output expression="h" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
