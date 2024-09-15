@@ -93,6 +93,3 @@
 #                                                               INPUT
 # umur = input("masukkan umur anda : ")
 # print("umur anda sekarang adalah",umur)
-
-test = True
-print(test)
