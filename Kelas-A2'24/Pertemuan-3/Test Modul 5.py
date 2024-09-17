@@ -9,9 +9,11 @@
 # else:
 #     print("ga jelas lu")
 
+
 # angka = int(input("Masukkan angka: "))
 # result = "Genap" if angka % 2 == 0 else "Ganjil"
 # print(angka, "adalah angka",result)
+
 
 # print("""
 # ====================
@@ -46,4 +48,5 @@
 #         print(f"hasil pembagian angka 1 dan 2 adalah {c}")
 #     case _:
 #         print("banyak banar")
+
 
