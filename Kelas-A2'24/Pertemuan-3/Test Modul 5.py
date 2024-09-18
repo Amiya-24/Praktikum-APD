@@ -49,3 +49,20 @@
 #     case _:
 #         print("banyak banar")
 
+
+nilai = int(input("Masukkan nilai anda : "))
+
+if nilai > 100 :
+    print("nilai tidak memenuhi syarat")
+elif nilai >= 80 :
+    if nilai >= 90 and nilai <= 100 :
+        print("nilai anda A+")
+    if nilai >=80 and nilai < 90 :
+        print("nilai anda A-")
+elif nilai >=70 :
+    if nilai >=75 and nilai < 80 :
+        print("nilai anda B+")
+    if nilai >= 70 and nilai < 75 :
+        print("nilai anda B-")
+else:
+    print("nilai anda tidak memenuhi syarat")
