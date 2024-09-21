@@ -4,16 +4,16 @@
         <attribute name="name" value="2409106031"/>
         <attribute name="authors" value="M. Faiz Lazuardi"/>
         <attribute name="about" value="Percobaan"/>
-        <attribute name="saved" value="2024-09-21 01:28:14 PM"/>
+        <attribute name="saved" value="2024-09-21 03:40:27 PM"/>
         <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
-        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yMTswMToyODoxNCBQTTsxODsyODEz"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yMTswMzo0MDoyNyBQTTsxOTsyODE0"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
             <declare name="nama, nim" type="String" array="False" size=""/>
             <declare name="d, f, v, g, h, j" type="Real" array="False" size=""/>
-            <comment text="d = Jumlah Pinjaman &#13;&#10;f = Lama Cicilan &#13;&#10;v = Bunga Per Tahun &#13;&#10;g = Bunga Per Bulan &#13;&#10;h = Cicilan Per Bulan "/>
+            <comment text="d = Jumlah Pinjaman &#13;&#10;f = Lama Cicilan &#13;&#10;v = Bunga Per Tahun &#13;&#10;g = Bunga Per Bulan &#13;&#10;h = Cicilan Per Bulan &#13;&#10;j = Jumlah Bulan"/>
             <output expression="&quot;Masukkan Nama Lengkap Anda&quot;" newline="True"/>
             <input variable="nama"/>
             <output expression="&quot;Masukkan Nim Anda&quot;" newline="True"/>
