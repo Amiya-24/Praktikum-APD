@@ -4,9 +4,9 @@
         <attribute name="name" value="2409106031"/>
         <attribute name="authors" value="M. Faiz Lazuardi"/>
         <attribute name="about" value="Posttest"/>
-        <attribute name="saved" value="2024-09-21 09:01:30 PM"/>
+        <attribute name="saved" value="2024-09-21 09:01:57 PM"/>
         <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
-        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yMTswOTowMTozMCBQTTsyMDsyODAz"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yMTswOTowMTo1NyBQTTsyMTsyODEz"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -41,7 +41,6 @@
                                 </then>
                                 <else>
                                     <output expression="&quot;Pilihan Tidak Valid&quot;" newline="True"/>
-                                    <breakpoint expression="" always="True"/>
                                 </else>
                             </if>
                         </else>
