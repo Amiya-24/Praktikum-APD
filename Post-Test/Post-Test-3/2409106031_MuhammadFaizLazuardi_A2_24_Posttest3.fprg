@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="2409106031"/>
+        <attribute name="authors" value="M. Faiz Lazuardi"/>
+        <attribute name="about" value="Percobaan"/>
+        <attribute name="saved" value="2024-09-21 01:28:14 PM"/>
+        <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yMTswMToyODoxNCBQTTsxODsyODEz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nama, nim" type="String" array="False" size=""/>
+            <declare name="d, f, v, g, h, j" type="Real" array="False" size=""/>
+            <comment text="d = Jumlah Pinjaman &#13;&#10;f = Lama Cicilan &#13;&#10;v = Bunga Per Tahun &#13;&#10;g = Bunga Per Bulan &#13;&#10;h = Cicilan Per Bulan "/>
+            <output expression="&quot;Masukkan Nama Lengkap Anda&quot;" newline="True"/>
+            <input variable="nama"/>
+            <output expression="&quot;Masukkan Nim Anda&quot;" newline="True"/>
+            <input variable="nim"/>
+            <output expression="&quot;Masukkan Jumlah Pinjaman&quot;" newline="True"/>
+            <input variable="d"/>
+            <output expression="&quot;Masukkan Lama Cicilan (1/2/3) Tahun&quot;" newline="True"/>
+            <input variable="f"/>
+            <if expression="f = 1">
+                <then>
+                    <assign variable="v" expression="0.07"/>
+                    <assign variable="j" expression="f *12"/>
+                </then>
+                <else>
+                    <if expression="f = 2">
+                        <then>
+                            <assign variable="v" expression="0.13"/>
+                            <assign variable="j" expression="f * 12"/>
+                        </then>
+                        <else>
+                            <if expression="f = 3">
+                                <then>
+                                    <assign variable="v" expression="0.19"/>
+                                    <assign variable="j" expression="f * 12"/>
+                                </then>
+                                <else>
+                                    <output expression="&quot;Pilihan Tidak Valid&quot;" newline="True"/>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+            <assign variable="g" expression="(v / 12)* d"/>
+            <assign variable="h" expression="(d + g) / j"/>
+            <output expression="&quot;Rincian Pinjaman&quot;" newline="True"/>
+            <output expression="&quot;Nama : &quot; &amp; nama" newline="True"/>
+            <output expression="&quot;Nim : &quot; &amp; nim" newline="True"/>
+            <output expression="&quot;Jumlah Pinjaman : Rp. &quot; &amp; d" newline="True"/>
+            <output expression="&quot;Lama Cicilan : &quot; &amp; f &amp; &quot; Tahun&quot;" newline="True"/>
+            <output expression="&quot;Bunga/Tahun : &quot; &amp; v" newline="True"/>
+            <output expression="&quot;Bunga/Bulan : &quot; &amp; g" newline="True"/>
+            <output expression="&quot;Cicilan/Bulan : Rp. &quot; &amp; h" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

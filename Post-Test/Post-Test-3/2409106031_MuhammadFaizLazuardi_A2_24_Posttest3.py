@@ -1,6 +1,6 @@
 nama = input("Masukkan Nama Lengkap Anda: ")
 nim = input("Masukkan Nim Anda: ")
-d = int(input("Masukkan Jumlah Pinjaman Anda: "))
+d = int(input("Masukkan Jumlah Pinjaman: "))
 
 print("""
 ==========================
@@ -26,7 +26,6 @@ elif f == 3:
     j = f * 12
 else:
     print("Pilihan Tidak Valid")
-    exit()
 
 g = (v / 12) * d
 h = (d + g) / j
