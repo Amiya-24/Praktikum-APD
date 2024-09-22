@@ -32,12 +32,12 @@ h = (d + g) / j
 
 print(f"""
 ==========Rincian Pinjaman===========
-Nama : {nama}
-Nim : {nim}
-Jumlah Pinjaman : Rp. {d}
-Lama Cicilan : {f} Tahun
-Bunga/Tahun : {v}
-Bunga/Bulan : {g}
+Nama : {nama}                        
+Nim : {nim}                          
+Jumlah Pinjaman : Rp. {d}            
+Lama Cicilan : {f} Tahun             
+Bunga/Tahun : {v}                    
+Bunga/Bulan : {g}                      
 Cicilan/Bulan : Rp. {h}
 =====================================
 """)
