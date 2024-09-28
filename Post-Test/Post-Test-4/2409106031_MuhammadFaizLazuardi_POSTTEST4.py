@@ -4,31 +4,9 @@ def clean():
     os.system("cls") # dipakai untuk membersihkan tampilan terminal
 
 clean()
+user = "faiz"
+pw = 31
 
-print("""
-<========== Selamat Datang ==========>
-Apakah Anda Ingin Membuat Akun?
-1. Ya
-2. Tidak
-<====================================>
-""")
-akun = int(input("Masukkan Pilihan Anda (1/2): "))
-
-clean()
-if akun == 1:
-    print("<========== Sign Up ==========>")
-    user = str(input("Masukkan Username Yang Ingin Anda Gunakan: "))
-    pw = int(input("Masukkan Password Yang Ingin Anda Gunakan: "))
-    print("Selamat Akun Anda Berhasil Di Buat")
-
-elif akun == 2:
-    print("Anda Harus Membuat Akun Jika Ingin Lanjut")
-    exit()
-else:
-    print("Input Tidak Valid")
-    exit()
-
-clean()
 percobaan = 3
 while percobaan > 0:
     print("<========== Login ==========>")
@@ -88,12 +66,12 @@ Cicilan/Bulan : Rp. {ccl_bulan}
             """)
 
             
-            ulang = input("Apakah Anda Ingin Mengulang? ketik 'ya' untuk mengulang atau 'exit' untuk keluar: ")
+            ulang = input("Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar: ")
             clean()
-            if ulang == "exit":
+            if ulang == "2":
                 print("Program Dihentikan")
                 break
-        
+            
     else:
         percobaan -= 1
         print("Username Atau Password Anda Salah")
