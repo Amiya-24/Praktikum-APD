@@ -1,9 +1,3 @@
-import os
-
-def clean():
-    os.system("cls") # dipakai untuk membersihkan tampilan terminal
-
-clean()
 user = "faiz"
 pw = 31
 
@@ -15,15 +9,13 @@ while percobaan > 0:
     if log_user == user and log_pw == pw:
         print("Anda Berhasil Login ")
 
-        clean()
         while True:
-            print("<========== Masukkan Data ==========>")
+            print("\n<========== Masukkan Data ==========>")
             nama = input("Masukkan Nama Lengkap Anda: ")
             nim = input("Masukkan Nim Anda: ")
             jml_pinjaman = int(input("Masukkan Jumlah Pinjaman: "))
             print("<===================================>")
 
-            clean()
             print("""
 <========== Lama Cicilan ==========>
 Pilih Lama Cicilan
@@ -51,8 +43,7 @@ Pilih Lama Cicilan
 
             bunga_bulan = (bunga_tahun / 12) * jml_pinjaman
             ccl_bulan = (jml_pinjaman + bunga_bulan) / jlm_bln
-            
-            clean()
+
             print(f"""
 <========== Rincian Pinjaman ===========>
 Nama : {nama}                        
@@ -64,10 +55,8 @@ Bunga/Bulan : {bunga_bulan}
 Cicilan/Bulan : Rp. {ccl_bulan}
 <=======================================>
             """)
-
             
             ulang = input("Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar: ")
-            clean()
             if ulang == "2":
                 print("Program Dihentikan")
                 break
