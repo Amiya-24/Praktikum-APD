@@ -1,8 +1,8 @@
 user = "faiz"
 pw = 31
 
-percobaan = 3
-while percobaan > 0:
+percobaan = 0
+while percobaan < 3:
     print("<========== Login ==========>")
     log_user = str(input("Masukkan Username Anda: "))
     log_pw = int(input("Masukkan Password Anda: "))
@@ -59,13 +59,11 @@ Cicilan/Bulan : Rp. {ccl_bulan}
             ulang = input("Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar: ")
             if ulang == "2":
                 print("Program Dihentikan")
-                break
+                exit()
 
     else:
-        percobaan -= 1
+        percobaan += 1
         print("Username Atau Password Anda Salah")
         print("Masukkan Username Atau Password Yang Benar\n")
-    break
-
-if percobaan == 0:
-    print("\nMohon Tunggu Beberapa Saat Sebelum Mencoba Login Lagi")
+        if percobaan == 3:
+            print("Mohon Tunggu Beberapa Saat Sebelum Mencoba Login Lagi")
