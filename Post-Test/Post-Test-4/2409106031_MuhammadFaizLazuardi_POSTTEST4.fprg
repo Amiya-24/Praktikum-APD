@@ -4,37 +4,105 @@
         <attribute name="name" value="2409106031"/>
         <attribute name="authors" value="M. Faiz Lazuardi"/>
         <attribute name="about" value="Posttest"/>
-        <attribute name="saved" value="2024-09-28 06:45:56 PM"/>
+        <attribute name="saved" value="2024-09-30 12:11:34 AM"/>
         <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
-        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0yODswNjo0NTo1NiBQTTsyNDsyODI3"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0zMDsxMjowNzo1OCBBTTsxO0FTVVM7REVTS1RPUC0xNFJGTlM4OzIwMjQtMDktMDY7MDQ6NDM6MDQgUE07MjQwOTEwNjAzMV9NdWhhbW1hZEZhaXpMYXp1YXJkaV9BMl8yNF9Qb3N0dGVzdDMuZnByZzsxMDA1MQ=="/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0zMDsxMjoxMTozNCBBTTsyNjsyNzkz"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
         <body>
-            <declare name="user, loguser, nama, nim, ulang" type="String" array="False" size=""/>
-            <declare name="pw, logpw, jmlpinjaman, lamaccl, jmlbulan, jmlpercobaan, percobaan, sisapercobaan" type="Integer" array="False" size=""/>
+            <declare name="user, loguser, nama, nim" type="String" array="False" size=""/>
+            <declare name="pw, logpw, jmlpinjaman, lamaccl, jmlbulan, jmlpercobaan, percobaan, sisapercobaan, ulang" type="Integer" array="False" size=""/>
             <declare name="bungatahun, bungabulan, cclbulan" type="Real" array="False" size=""/>
             <assign variable="user" expression="&quot;faiz&quot;"/>
             <assign variable="pw" expression="31"/>
-            <assign variable="jmlpercobaan" expression="3"/>
-            <while expression="jmlpercobaan == 3">
-                <output expression="&quot;Masukkan Username Anda&quot;" newline="True"/>
-                <input variable="loguser"/>
-                <output expression="&quot;Masukkan Password Anda&quot;" newline="True"/>
-                <input variable="logpw"/>
-                <if expression="loguser == user and logpw == pw">
+            <output expression="&quot;&lt;========== Login ==========&gt;&quot;" newline="True"/>
+            <output expression="&quot;Masukkan Username Anda&quot;" newline="True"/>
+            <input variable="loguser"/>
+            <output expression="&quot;Masukkan Password Anda&quot;" newline="True"/>
+            <input variable="logpw"/>
+            <assign variable="percobaan" expression="0"/>
+            <assign variable="ulang" expression="1"/>
+            <while expression="not (loguser == user and logpw == pw)">
+                <assign variable="percobaan" expression="percobaan + 1"/>
+                <output expression="&quot;Username Atau Password Anda Salah&quot;" newline="True"/>
+                <output expression="&quot;Masukkan Username Atau Password Yang Benar&quot;" newline="True"/>
+                <if expression="percobaan = 3">
                     <then>
-                        <output expression="&quot;Anda Berhasil Login&quot;" newline="True"/>
-                        <while expression="True"/>
+                        <assign variable="loguser" expression="user"/>
+                        <assign variable="logpw" expression="pw"/>
+                        <assign variable="ulang" expression="2"/>
                     </then>
                     <else>
-                        <output expression="&quot;Username Atau Password Anda Salah&quot;" newline="True"/>
-                        <output expression="&quot;Masukkan Username Atau Password Yang Benar&quot;" newline="True"/>
-                        <assign variable="sisapercobaan" expression="jmlpercobaan - 1"/>
-                        <output expression="&quot;Sisa Percobaan Login Anda Adalah &quot; &amp; sisapercobaan" newline="True"/>
+                        <output expression="&quot;&lt;========== Login ==========&gt;&quot;" newline="True"/>
+                        <output expression="&quot;Masukkan Username Anda&quot;" newline="True"/>
+                        <input variable="loguser"/>
+                        <output expression="&quot;Masukkan Password Anda&quot;" newline="True"/>
+                        <input variable="logpw"/>
                     </else>
                 </if>
             </while>
+            <while expression="ulang == 1">
+                <output expression="&quot;Anda Berhasil Login&quot;" newline="True"/>
+                <output expression="&quot;&lt;========== Masukkan Data ==========&gt;&quot;" newline="True"/>
+                <output expression="&quot;Masukkan Nama Lengkap Anda&quot;" newline="True"/>
+                <input variable="nama"/>
+                <output expression="&quot;Masukkan Nim Anda&quot;" newline="True"/>
+                <input variable="nim"/>
+                <output expression="&quot;Masukkan Jumlah Pinjaman&quot;" newline="True"/>
+                <input variable="jmlpinjaman"/>
+                <output expression="&quot;Masukkan Lama Cicilan (1/2/3) Tahun&quot;" newline="True"/>
+                <input variable="lamaccl"/>
+                <if expression="lamaccl == 1">
+                    <then>
+                        <assign variable="bungatahun" expression="0.07"/>
+                        <assign variable="jmlbulan" expression="lamaccl * 12"/>
+                    </then>
+                    <else>
+                        <if expression="lamaccl == 2">
+                            <then>
+                                <assign variable="bungatahun" expression="0.13"/>
+                                <assign variable="jmlbulan" expression="lamaccl * 12"/>
+                            </then>
+                            <else>
+                                <if expression="lamaccl == 3">
+                                    <then>
+                                        <assign variable="bungatahun" expression="0.19"/>
+                                        <assign variable="jmlbulan" expression="lamaccl * 12"/>
+                                    </then>
+                                    <else>
+                                        <output expression="&quot;Pilihan Tidak Valid&quot;" newline="True"/>
+                                        <assign variable="ulang" expression="2"/>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <if expression="ulang == 1">
+                    <then>
+                        <assign variable="bungabulan" expression="(bungatahun / 12) * jmlpinjaman"/>
+                        <assign variable="cclbulan" expression="(jmlpinjaman + bungabulan) / jmlbulan"/>
+                        <output expression="&quot;Rincian Pinjaman&quot;" newline="True"/>
+                        <output expression="&quot;Nama : &quot; &amp; nama" newline="True"/>
+                        <output expression="&quot;Nim : &quot; &amp; nim" newline="True"/>
+                        <output expression="&quot;Jumlah Pinjaman : Rp. &quot; &amp; jmlpinjaman" newline="True"/>
+                        <output expression="&quot;Lama Cicilan : &quot; &amp; lamaccl &amp; &quot; Tahun&quot;" newline="True"/>
+                        <output expression="&quot;Bunga/Tahun : &quot; &amp; bungatahun" newline="True"/>
+                        <output expression="&quot;Bunga/Bulan : &quot; &amp; bungabulan" newline="True"/>
+                        <output expression="&quot;Cicilan/Bulan : Rp. &quot; &amp; cclbulan" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <output expression="&quot;Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar&quot;" newline="True"/>
+                <input variable="ulang"/>
+                <if expression="ulang == 1 or ulang == 2">
+                    <then/>
+                    <else/>
+                </if>
+            </while>
+            <output expression="&quot;Program Dihentikan&quot;" newline="True"/>
         </body>
     </function>
 </flowgorithm>
