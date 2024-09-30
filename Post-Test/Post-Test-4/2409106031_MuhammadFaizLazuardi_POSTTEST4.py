@@ -56,8 +56,8 @@ Cicilan/Bulan : Rp. {ccl_bulan}
 <=======================================>
             """)
             
-            ulang = input("Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar: ")
-            if ulang == "2":
+            ulang = int(input("Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar: "))
+            if ulang < 1 or ulang > 1:
                 print("Program Dihentikan")
                 exit()
 
