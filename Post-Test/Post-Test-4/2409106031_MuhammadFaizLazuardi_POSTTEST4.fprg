@@ -4,10 +4,10 @@
         <attribute name="name" value="2409106031"/>
         <attribute name="authors" value="M. Faiz Lazuardi"/>
         <attribute name="about" value="Posttest"/>
-        <attribute name="saved" value="2024-09-30 12:11:34 AM"/>
+        <attribute name="saved" value="2024-09-30 12:05:27 PM"/>
         <attribute name="created" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0wNjswNDo0MzowNCBQTTsyNjUx"/>
         <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0zMDsxMjowNzo1OCBBTTsxO0FTVVM7REVTS1RPUC0xNFJGTlM4OzIwMjQtMDktMDY7MDQ6NDM6MDQgUE07MjQwOTEwNjAzMV9NdWhhbW1hZEZhaXpMYXp1YXJkaV9BMl8yNF9Qb3N0dGVzdDMuZnByZzsxMDA1MQ=="/>
-        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0zMDsxMjoxMTozNCBBTTsyNjsyNzkz"/>
+        <attribute name="edited" value="QVNVUztERVNLVE9QLTE0UkZOUzg7MjAyNC0wOS0zMDsxMjowNToyNyBQTTsyNzsyODE0"/>
     </attributes>
     <function name="Main" type="None" variable="">
         <parameters/>
@@ -97,10 +97,6 @@
                 </if>
                 <output expression="&quot;Apakah Anda Ingin Mengulang? ketik '1' untuk mengulang atau '2' untuk keluar&quot;" newline="True"/>
                 <input variable="ulang"/>
-                <if expression="ulang == 1 or ulang == 2">
-                    <then/>
-                    <else/>
-                </if>
             </while>
             <output expression="&quot;Program Dihentikan&quot;" newline="True"/>
         </body>
