@@ -11,10 +11,6 @@ paket = [
     [makan[0][2],minum[0][2]]
 ]
 
-
-
-
-
 while True:
     print("""
 <============================================================>
@@ -51,11 +47,12 @@ while True:
 | 2. Liat Menu Yang Ada        |                  
 | 3. Ubah Menu Yang Ada        |
 | 4. Hapus Menu Yang Ada       |
-| 5. Kembali                   |
-| 6. Keluar                    |
+| 5. Keluar                    |
 <==============================>
 """)
                         pilih3 = input("Masukkan Pilihan Anda: ")
+
+                        # TAMBAH MENU
                         if pilih3 == "1":
                             print("""
 <=============================>
@@ -68,10 +65,7 @@ while True:
 | 5. Keluar                   |                                               
 <=============================>                                                                
 """)
-                            pilih4 = input("Menu Apa Yang Ingin Anda Tambahkan: ")
-                            if pilih4 == "1":
-                                makan_baru = input("Masukkan Nama Makanan Yang Ingin di Tambahkan: ")
-                                makan_ada = False
+                        # LIAT MENU
                         elif pilih3 == "2":
                             print("""
 <============================>
@@ -84,9 +78,33 @@ while True:
 | 5. Keluar                  | 
 <============================>                                  
 """)
-                        # elif pilih3 == "3":
-                        # elif pilih3 == "4":
-                        # elif pilih3 == "5":
+                        # UBAH MENU
+                        elif pilih3 == "3":
+                            print("""
+<============================>
+|     UBAH MENU YANG ADA     |
+<============================>
+| 1. Makanan                 |  
+| 2. Minuman                 |  
+| 3. Paket Hemat             |      
+| 4. Kembali                 |  
+| 5. Keluar                  | 
+<============================>                                  
+""")
+                        #HAPUS MENU
+                        elif pilih3 == "4":
+                            print("""
+<============================>
+|    HAPUS MENU YANG ADA     |
+<============================>
+| 1. Makanan                 |  
+| 2. Minuman                 |  
+| 3. Paket Hemat             |      
+| 4. Kembali                 |  
+| 5. Keluar                  | 
+<============================>                                  
+""")
+                        #KELUAR
                         else:
                             exit()
             
@@ -102,7 +120,7 @@ while True:
             for i in  range(len(account)):
                 if user == account[1][0] and pw == account[1][1]:
                     account_ada = True
-                    print("d")
+                    print("")
                     exit()
         # KEMBALI            
         elif pilih2 == "3":
