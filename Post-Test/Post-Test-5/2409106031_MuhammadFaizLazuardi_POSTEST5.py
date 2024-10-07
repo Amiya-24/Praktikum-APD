@@ -1,5 +1,5 @@
 akun = [["admin","admin123","ADMIN"]]
-menu = []
+menu = [["lele","100"]]
 
 while True:
     print("""
@@ -64,22 +64,25 @@ while True:
                         print("Menu Masih Kosong")
                     else:
                         for i in range(len(menu)):
-                            print(f"\nMenu ke-{i+1}\nNama Menu : {menu[i][0]}")
+                            print(f"\nMenu ke-{i+1}\nNama Menu : {menu[i][0]}\nHarga Menu : Rp.{menu[i][1]}")
                 elif pilih2 == "2" and role == "ADMIN":
                     nama_menu = input("Masukkan Nama Menu: ")
                     for i in range(len(menu)):
-                        if menu[i] == nama_menu:
+                        if menu[i][0] == nama_menu:
                             print("Menu Sudah Ada")
                             break
                     else:
-                        menu.append(nama_menu)
+                        harga_menu = int(input("Masukkan Harga Menu: Rp."))
+                        menu.append([nama_menu,harga_menu])
                         print("Menu Berhasil Ditambahkan")
                 elif pilih2 == "3":
                     menu_lama = input("Masukkan Menu Yang Ingin Diganti: ")
                     for i in range(len(menu)):
                         if menu[i][0] == menu_lama:
                             menu_baru = input("Masukkan Menu Baru: ")
-                            menu[i][0] == menu_baru
+                            harga_baru = int(input("Masukkan Harga Baru: Rp."))
+                            menu[i][0] = menu_baru
+                            menu[i][1] = harga_baru
                             break
                     else:
                         print("Menu Tidak Ditemukan")
@@ -89,14 +92,15 @@ while True:
                     else:
                         menu_lama = input("Masukkan Menu Yang Ingin Dihapus: ")
                         for i in range(len(menu)):
-                            if menu[i] == menu_lama:
+                            if menu[i][0] == menu_lama:
                                 del menu[i]
+                                print("Menu Berhasil Dihapus")
                                 break
-                            else:
-                                print("Nama Tidak Ditemukan")
+                        else:
+                            print("Nama Tidak Ditemukan")
                 elif pilih2 == "5":
                     print("Terima Kasih Telah Datang")
-                    exit()
+                    break
                 else:
                     print("Pilihan Invalid")
 
