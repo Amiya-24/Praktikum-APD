@@ -15,8 +15,6 @@ while True:
 
     if pilih1 == "1":
         username_baru = input("\nMasukkan Username Baru: ")
-        password_baru = input("Masukkan Password Baru: ")
-
         akun_terdaftar = False
         for user in akun:
             if user[0] == username_baru:
@@ -27,6 +25,7 @@ while True:
             print("Nama Akun Sudah Terdaftar!")
 
         else:
+            password_baru = input("Masukkan Password Baru: ")
             role_baru = "pengunjung"
             akun.append([username_baru, password_baru, role_baru])
             print("Register Berhasil!")
