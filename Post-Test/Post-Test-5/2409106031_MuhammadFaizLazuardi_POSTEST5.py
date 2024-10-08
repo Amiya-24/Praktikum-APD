@@ -77,7 +77,7 @@ while True:
                             harga_menu = int(input("Masukkan Harga Menu: Rp."))
                         menu.append([nama_menu,harga_menu])
                         print("Menu Berhasil Ditambahkan")
-                elif pilih2 == "3":
+                elif pilih2 == "3" and role == "ADMIN":
                     menu_lama = input("\nMasukkan Menu Yang Ingin Diganti: ")
                     for i in range(len(menu)):
                         if menu[i][0] == menu_lama:
