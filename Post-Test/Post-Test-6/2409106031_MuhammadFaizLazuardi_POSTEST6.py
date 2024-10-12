@@ -1,5 +1,12 @@
-akun = [["admin","admin123","ADMIN"]]
-menu = [["ayam",100],["bebek",110],["lele",125]]
+akun = {
+    "admin" : {"pw" : "admin123", "role" : "ADMIN"}
+}
+
+menu = {
+    "ayam" : 100,
+    "bebek" : 110,
+    "lele" : 125
+}
 
 while True:
     print("""
@@ -13,44 +20,33 @@ while True:
 """)
     pilih1 = input("\nMasukkan Pilihan Anda: ")
 
+    # REGISTER
     if pilih1 == "1":
         username_baru = input("\nMasukkan Username Baru: ")
-        akun_terdaftar = False
-        for user in akun:
-            if user[0] == username_baru:
-                akun_terdaftar = True
-                break
 
-        if akun_terdaftar:
+        if username_baru in akun:
             print("Nama Akun Sudah Terdaftar!")
 
         else:
             password_baru = input("Masukkan Password Baru: ")
             role_baru = "pengunjung"
-            akun.append([username_baru, password_baru, role_baru])
+            akun[username_baru] = {"pw" : password_baru, "role" : role_baru}
             print("Register Berhasil!")
-
+    # LOGIN
     elif pilih1 == "2":
         username = input("\nMasukkan Username: ")
         password = input("Masukkan Password: ")
-        login = False
 
-        for user in akun:
-            if user[0] == username and user[1] == password:
-                print(f"Login Berhasil, Selamat Datang {username}")
-                login = True
-                role = user[2]
-                break
-        else:
-            print("Username Atau Password Anda Salah")
+        if username in akun and akun[username]["pw"] == password:
+            print(f"Login Berhasil, Selamat Datang {username}")
+            role = akun[username]["role"]
 
-        if login:
             print("\n<==============================>")
             print("|        SELAMAT DATANG        |")
             print("<==============================>")
             print("| 1. Liat Menu                 |")
             if role == "ADMIN":
-                print("| 2. Tambah Menu               |")                  
+                print("| 2. Tambah Menu               |")
                 print("| 3. Ubah Menu                 |")
                 print("| 4. Hapus Menu                |")
             print("| 5. Keluar                    |")
@@ -58,57 +54,75 @@ while True:
 
             while True:
                 pilih2 = input("\nMasukkan Pilihan Anda: ")
+
+                # READ
                 if pilih2 == "1":
                     if len(menu) == 0:
                         print("\nMenu Masih Kosong")
+
                     else:
-                        for i in range(len(menu)):
-                            print(f"\nMenu ke-{i+1}\nNama Menu : {menu[i][0]}\nHarga Menu : Rp.{menu[i][1]}")
+                        for key, value in menu.items():
+                            print(f"\nNama Menu : {key}")
+                            print(f"Harga Menu : Rp.{value}")
+
+                # CREATE
                 elif pilih2 == "2" and role == "ADMIN":
                     nama_menu = input("\nMasukkan Nama Menu: ")
-                    for i in range(len(menu)):
-                        if menu[i][0] == nama_menu:
-                            print("Menu Sudah Ada")
-                            break
+                    if nama_menu in menu:
+                        print("Menu Sudah Ada")
+
                     else:
                         harga_menu = int(input("Masukkan Harga Menu: Rp."))
+
                         while harga_menu <= 0:
                             print("Harga Tidak Bisa Lebih Kecil Dari 1")
                             harga_menu = int(input("Masukkan Harga Menu: Rp."))
-                        menu.append([nama_menu,harga_menu])
+                        menu[nama_menu] = {harga_menu}
                         print("Menu Berhasil Ditambahkan")
+
+                # UPDATE
                 elif pilih2 == "3" and role == "ADMIN":
                     menu_lama = input("\nMasukkan Menu Yang Ingin Diganti: ")
-                    for i in range(len(menu)):
-                        if menu[i][0] == menu_lama:
-                            menu_baru = input("Masukkan Menu Baru: ")
+                    if menu_lama in menu:
+                        menu_baru = input("Masukkan Menu Baru: ")
+                        harga_baru = int(input("Masukkan Harga Baru: Rp."))
+
+                        while harga_menu <= 0:
+                            print("Harga Tidak Bisa Lebih Kecil Dari 1")
                             harga_baru = int(input("Masukkan Harga Baru: Rp."))
-                            while harga_menu <= 0:
-                                print("Harga Tidak Bisa Lebih Kecil Dari 1")
-                                harga_baru = int(input("Masukkan Harga Baru: Rp."))
-                            menu[i][0] = menu_baru
-                            menu[i][1] = harga_baru
-                            break
+                        menu[menu_baru] = {harga_baru}
+                        if menu_lama != menu_baru:
+                            del menu[menu_lama]
+
                     else:
                         print("Menu Tidak Ditemukan")
+
+                # DELETE
                 elif pilih2 == "4" and role == "ADMIN":
                     if len(menu) == 0:
                         print("\nMenu Masih Kosong")
+
                     else:
                         menu_lama = input("\nMasukkan Menu Yang Ingin Dihapus: ")
-                        for i in range(len(menu)):
-                            if menu[i][0] == menu_lama:
-                                del menu[i]
-                                print("Menu Berhasil Dihapus")
-                                break
+                        if menu_lama in menu:
+                            del menu[menu_lama]
+                            print("Menu Berhasil Dihapus")
+
                         else:
                             print("\nNama Tidak Ditemukan")
+
+                # KEMBALI
                 elif pilih2 == "5":
                     print("\nKembali Ke Halaman Utama")
                     break
+
                 else:
                     print("\nPilihan Invalid")
 
+        else:
+            print("Username Atau Password Anda Salah")
+
+    # KELUAR
     elif pilih1 == "3":
         print("\nTerima Kasih Telah Datang")
         break
