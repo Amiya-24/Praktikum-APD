@@ -61,9 +61,9 @@ while True:
                         print("\nMenu Masih Kosong")
 
                     else:
-                        for key, value in menu.items():
-                            print(f"\nNama Menu : {key}")
-                            print(f"Harga Menu : Rp.{value}")
+                        for nama, harga in menu.items():
+                            print(f"\nNama Menu : {nama}")
+                            print(f"Harga Menu : Rp.{harga}")
 
                 # CREATE
                 elif pilih2 == "2" and role == "ADMIN":
@@ -72,27 +72,41 @@ while True:
                         print("Menu Sudah Ada")
 
                     else:
-                        harga_menu = int(input("Masukkan Harga Menu: Rp."))
+                        while True:
+                            try:
+                                harga_menu = int(input("Masukkan Harga Menu: Rp."))
 
-                        while harga_menu <= 0:
-                            print("Harga Tidak Bisa Lebih Kecil Dari 1")
-                            harga_menu = int(input("Masukkan Harga Menu: Rp."))
-                        menu[nama_menu] = {harga_menu}
-                        print("Menu Berhasil Ditambahkan")
+                                while harga_menu <= 0:
+                                    print("Harga Tidak Bisa Lebih Kecil Dari 1")
+                                    harga_menu = int(input("Masukkan Harga Menu: Rp."))
+                                menu[nama_menu] = harga_menu
+                                print("Menu Berhasil Ditambahkan")
+                                break
+
+                            except ValueError:
+                                print("Masukkan Angka\n")
+
 
                 # UPDATE
                 elif pilih2 == "3" and role == "ADMIN":
                     menu_lama = input("\nMasukkan Menu Yang Ingin Diganti: ")
                     if menu_lama in menu:
                         menu_baru = input("Masukkan Menu Baru: ")
-                        harga_baru = int(input("Masukkan Harga Baru: Rp."))
+                        while True:
+                            try:
+                                harga_baru = int(input("Masukkan Harga Baru: Rp."))
 
-                        while harga_menu <= 0:
-                            print("Harga Tidak Bisa Lebih Kecil Dari 1")
-                            harga_baru = int(input("Masukkan Harga Baru: Rp."))
-                        menu[menu_baru] = {harga_baru}
-                        if menu_lama != menu_baru:
-                            del menu[menu_lama]
+                                while harga_baru <= 0:
+                                    print("Harga Tidak Bisa Lebih Kecil Dari 1")
+                                    harga_baru = int(input("Masukkan Harga Baru: Rp."))
+                                menu[menu_baru] = harga_baru
+                                if menu_lama != menu_baru:
+                                    del menu[menu_lama]
+                                    print("Menu Berhasil Diganti")
+                                    break
+
+                            except ValueError:
+                                print("Masukkan Angka\n")
 
                     else:
                         print("Menu Tidak Ditemukan")
@@ -125,7 +139,32 @@ while True:
     # KELUAR
     elif pilih1 == "3":
         print("\nTerima Kasih Telah Datang")
+        print("""
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣴⣶⣾⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠛⠓⣶⣶⢶⣶⣶⣶⣶⠶⣤⣄⡀⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⡿⠟⠋⢉⣁⣠⣤⣴⡶⠀⡴⣿⣿⣿⣿⣿⣿⡏⣙⣿⡷⠋⢉⠓⢦⣄⠀⠀
+    ⠀⠀⠀⠀⣴⣿⣿⣿⠿⠋⣁⣤⣶⣿⣿⣿⣿⣿⠏⠀⣼⣽⣿⣿⣿⡿⠿⠿⣿⣿⠏⡠⠚⣡⣶⣶⣾⣿⠀
+    ⠀⠀⢀⣾⣿⣿⠟⣡⣶⣿⠿⠛⠁⠀⠘⣿⣿⡟⠀⢸⣧⣿⡟⠉⠀⠀⠀⠀⠀⠀⡜⢀⣾⣿⣿⣿⣿⠟⠀
+    ⠀⢠⣿⣿⡟⣡⣾⣿⣟⣥⡶⠒⠊⢉⣡⢿⣿⣧⠀⢸⣿⠏⠀⠀⠀⠀⠀⠀⠀⠈⢀⣾⡿⠿⠿⠿⠯⢤⡄
+    ⢀⣿⣿⡟⣼⣿⠟⠹⣿⣏⠀⠠⠒⣉⠔⣫⠽⡿⣆⠈⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣀⣤⠖⠒⠒⡂⢠⡇
+    ⢸⣿⡟⣸⣿⠏⠀⠀⠘⢿⣷⡀⠈⠤⠊⢁⡼⠁⣈⣷⣾⣷⣄⠀⠀⠐⠢⢴⣶⡶⠯⢷⡫⢔⣥⣮⠾⠋⠀
+    ⣿⣿⡇⣿⡟⠀⠀⠀⠀⠀⠙⠻⢷⣦⡶⣿⣷⣿⣿⣿⣿⣿⣿⠿⠿⠖⠒⠒⠒⠒⠚⠛⠋⠉⠉⠀⠀⠀⠀
+    ⢻⣿⠸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⡿⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠘⣿⠀⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠹⣇⠸⣿⡀⠀⠀⠀⠀⠀⠀⠘⣿⣿⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    ⠀⠀⠻⣆⢻⣧⠀⠀⠀⠀⠀⠀⠀⢻⣿⠘⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⡀⠀⠀⠀⠀
+    ⠀⠀⠀⠙⣦⡹⣷⡀⠀⠀⠀⠀⠀⠀⠹⣆⠀⠙⠷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡶⠋⡀⠀⢿⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠈⠛⢮⣷⣤⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠉⠛⠶⢤⣤⣤⡴⠖⠋⣁⣤⠞⢀⠀⡿⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠈⠙⠳⢦⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠻⣟⣛⣩⣥⠖⠁⢰⠇⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡔⢫⣿⡟⡟⠛⠶⠶⠦⠤⠤⣤⣤⣤⣤⣤⣼⠿⠯⠭⠤⠔⠊⣿⠀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⠷⣬⣿⡾⠃⠀⠀⠀⠀⠀⠀⠀⠻⣦⡀⠹⣯⡻⠶⠦⠤⠤⠄⢿⡀⠀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢦⣘⠻⣷⣤⣄⣀⠀⠈⢷⡀⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠓⠶⣬⣉⣉⠉⠀⢀⣿⠀⠀⠀
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠁⠀⠀⠀
+""")
         break
 
     else:
         print("\nPilihan Tidak Valid!")
+        
