@@ -49,7 +49,7 @@ while True:
                 print("| 2. Tambah Menu               |")
                 print("| 3. Ubah Menu                 |")
                 print("| 4. Hapus Menu                |")
-            print("| 5. Keluar                    |")
+            print("| 5. Kembali                   |")
             print("<==============================>")
 
             while True:
