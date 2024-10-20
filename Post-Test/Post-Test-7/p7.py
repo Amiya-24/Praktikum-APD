@@ -99,11 +99,11 @@ def tampilan_menu_utama():
 | 3. Keluar                                                  |
 <============================================================>
 """)
-     
+
 def program():
     tampilan_menu_utama()
     pilih1 = input("\nMasukkan Pilihan Anda: ")
-    
+
     if pilih1 == "1":
         username_baru = input("\nMasukkan Username Baru: ")
         if username_baru in akun:
