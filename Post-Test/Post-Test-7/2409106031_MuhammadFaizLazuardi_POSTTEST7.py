@@ -131,7 +131,7 @@ def program():
         password = input("Masukkan Password: ")
         role = login(username,password)
         print("<=====================================>")
-        
+     
 
         if role:
             while True:
@@ -145,7 +145,7 @@ def program():
                     print("| 4. Hapus Menu                |")
                 print("| 5. Kembali                   |")
                 print("<==============================>")
-            
+           
                 pilih2 = input("\nMasukkan Pilihan Anda: ")
                 clean()
                 if pilih2 == "1":
