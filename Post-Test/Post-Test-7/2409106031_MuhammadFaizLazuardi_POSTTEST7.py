@@ -34,7 +34,7 @@ def liat_menu():
 
     else:
         for nama, harga in menu.items():
-            print(f"\nMenu Ke-{nama+1}\nNama Menu : {nama}\nHarga Menu : RP.{harga}")
+            print(f"\nNama Menu : {nama}\nHarga Menu : RP.{harga}")
 
 def tambah_menu():
     nama_menu = input("\nMasukkan Nama Menu: ")
