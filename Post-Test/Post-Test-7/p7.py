@@ -1,3 +1,10 @@
+import os
+
+def clean():
+    os.system("cls")
+
+clean()
+
 akun = {
     "admin" : {"pw" : "admin123", "role" : "ADMIN"}
 }
@@ -90,7 +97,7 @@ def kembali_ke_menu():
     print("\nKembali Ke Halaman Utama")
 
 def tampilan_menu_utama():
-     print("""
+    print("""
 <============================================================>
 |             SELAMAT DATANG DI WARUNG MAKAN ABL             | 
 <============================================================>
@@ -105,46 +112,62 @@ def program():
     pilih1 = input("\nMasukkan Pilihan Anda: ")
 
     if pilih1 == "1":
-        username_baru = input("\nMasukkan Username Baru: ")
+        clean()
+        print("<========== REGISTER ==========>")
+        username_baru = input("Masukkan Username Baru: ")
         if username_baru in akun:
             print("Nama Akun Sudah Terdaftar!")
 
         else:
-            password_baru = input("Masukkan Password Baru: ")
             role_baru = "pengunjung"
+            password_baru = input("Masukkan Password Baru: ")
             akun[username_baru] = {"pw" : password_baru, "role" : role_baru}
             print("Register Berhasil!")
+        print("<==============================>")
 
     elif pilih1 == "2":
-        username = input("\nMasukkan Username: ")
-        password = input("Masukkan Password")
+        clean()
+        print("<=============== LOGIN ===============>")
+        username = input("Masukkan Username: ")
+        password = input("Masukkan Password: ")
         role = login(username,password)
+        print("<=====================================>")
+        
 
         if role:
-            print("\n<==============================>")
-            print("|        SELAMAT DATANG        |")
-            print("<==============================>")
-            print("| 1. Liat Menu                 |")
-            if role == "ADMIN":
-                print("| 2. Tambah Menu               |")
-                print("| 3. Ubah Menu                 |")
-                print("| 4. Hapus Menu                |")
-            print("| 5. Kembali                   |")
-            print("<==============================>")
-
             while True:
+                print("\n<==============================>")
+                print("|        SELAMAT DATANG        |")
+                print("<==============================>")
+                print("| 1. Liat Menu                 |")
+                if role == "ADMIN":
+                    print("| 2. Tambah Menu               |")
+                    print("| 3. Ubah Menu                 |")
+                    print("| 4. Hapus Menu                |")
+                print("| 5. Kembali                   |")
+                print("<==============================>")
+            
                 pilih2 = input("\nMasukkan Pilihan Anda: ")
+                clean()
                 if pilih2 == "1":
+                    print("<========== DAFTAR MENU ==========>")
                     liat_menu()
+                    print("\n<=================================>")
 
-                elif pilih2 == "2":
+                elif pilih2 == "2" and role == "ADMIN":
+                    print("<========== MENAMBAHKAN MENU ==========>")
                     tambah_menu()
+                    print("\n<======================================>")
 
-                elif pilih2 == "3":
+                elif pilih2 == "3" and role == "ADMIN":
+                    print("<========== MENGUBAH MENU ==========>")
                     ubah_menu()
+                    print("\n<===================================>")
 
-                elif pilih2 == "4":
+                elif pilih2 == "4" and role == "ADMIN":
+                    print("<========== MENGHAPUS MENU ==========>")
                     hapus_menu()
+                    print("\n<====================================>")
 
                 elif pilih2 == "5":
                     kembali_ke_menu()
@@ -154,6 +177,7 @@ def program():
                     print("\nPilihan Invalid")
 
     elif pilih1 == "3":
+        clean()
         keluar_dari_program()
 
     else:
