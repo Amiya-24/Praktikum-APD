@@ -8,26 +8,14 @@ menu = {
     "lele" : 125
 }
 
-def register():
-    username_baru = input("\nMasukkan Username Baru: ")
-    if username_baru in akun:
-        print("Nama Akun Sudah Terdaftar!")
-
-    else:
-        password_baru = input("Masukkan Password Baru: ")
-        role_baru = "pengunjung"
-        akun[username_baru] = {"pw" : password_baru, "role" : role_baru}
-        print("Register Berhasil!")
-
-def login():
-    username = input("\nMasukkan Username: ")
-    password = input("Masukkan Password: ")
+def login(username, password):
     if username in akun and akun[username]["pw"] == password:
         print(f"Login Berhasil, Selamat Datang {username}")
-        role = akun[username]["role"]
+        return akun[username]["role"]
     
     else:
         print("Username Atau Password Anda Salah")
+        return None
 
 def keluar_dari_program():
     print("\nTerima Kasih Telah Datang")
@@ -101,7 +89,7 @@ def hapus_menu():
 def kembali_ke_menu():
     print("\nKembali Ke Halaman Utama")
 
-def tampilan_menu_1():
+def tampilan_menu_utama():
      print("""
 <============================================================>
 |             SELAMAT DATANG DI WARUNG MAKAN ABL             | 
@@ -111,42 +99,59 @@ def tampilan_menu_1():
 | 3. Keluar                                                  |
 <============================================================>
 """)
-    
-def tampilan_menu_2():
-    print("\n<==============================>")
-    print("|        SELAMAT DATANG        |")
-    print("<==============================>")
-    print("| 1. Liat Menu                 |")
-    print("| 2. Tambah Menu               |")
-    print("| 3. Ubah Menu                 |")
-    print("| 4. Hapus Menu                |")
-    print("| 5. Kembali                   |")
-    print("<==============================>")
-
+     
 def program():
-    tampilan_menu_1()
+    tampilan_menu_utama()
     pilih1 = input("\nMasukkan Pilihan Anda: ")
+    
     if pilih1 == "1":
-        register()
+        username_baru = input("\nMasukkan Username Baru: ")
+        if username_baru in akun:
+            print("Nama Akun Sudah Terdaftar!")
+
+        else:
+            password_baru = input("Masukkan Password Baru: ")
+            role_baru = "pengunjung"
+            akun[username_baru] = {"pw" : password_baru, "role" : role_baru}
+            print("Register Berhasil!")
 
     elif pilih1 == "2":
-        login()
-        while True:
-            tampilan_menu_2()
-            pilih2 = input("\nMasukkan Pilihan Anda: ")
-            if pilih2 == "1":
-                liat_menu()
-            elif pilih2 == "2":
-                tambah_menu()
-            elif pilih2 == "3":
-                ubah_menu()
-            elif pilih2 == "4":
-                hapus_menu()
-            elif pilih2 == "5":
-                kembali_ke_menu()
-                break
-            else:
-                print("\nPilihan Invalid")
+        username = input("\nMasukkan Username: ")
+        password = input("Masukkan Password")
+        role = login(username,password)
+
+        if role:
+            print("\n<==============================>")
+            print("|        SELAMAT DATANG        |")
+            print("<==============================>")
+            print("| 1. Liat Menu                 |")
+            if role == "ADMIN":
+                print("| 2. Tambah Menu               |")
+                print("| 3. Ubah Menu                 |")
+                print("| 4. Hapus Menu                |")
+            print("| 5. Kembali                   |")
+            print("<==============================>")
+
+            while True:
+                pilih2 = input("\nMasukkan Pilihan Anda: ")
+                if pilih2 == "1":
+                    liat_menu()
+
+                elif pilih2 == "2":
+                    tambah_menu()
+
+                elif pilih2 == "3":
+                    ubah_menu()
+
+                elif pilih2 == "4":
+                    hapus_menu()
+
+                elif pilih2 == "5":
+                    kembali_ke_menu()
+                    break
+
+                else:
+                    print("\nPilihan Invalid")
 
     elif pilih1 == "3":
         keluar_dari_program()
