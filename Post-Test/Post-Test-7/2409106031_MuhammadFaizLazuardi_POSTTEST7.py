@@ -20,7 +20,7 @@ def login(username, password):
     if username in akun and akun[username]["pw"] == password:
         print(f"Login Berhasil, Selamat Datang {username}")
         return akun[username]["role"]
-    
+
     else:
         print("Username Atau Password Anda Salah")
         return None
