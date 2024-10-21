@@ -15,6 +15,7 @@ menu = {
     "lele" : 125
 }
 
+jumlah_menu = 1
 def login(username, password):
     if username in akun and akun[username]["pw"] == password:
         print(f"Login Berhasil, Selamat Datang {username}")
@@ -33,8 +34,11 @@ def liat_menu():
         print("\nMenu Masih Kosong")
 
     else:
+        global jumlah_menu
         for nama, harga in menu.items():
-            print(f"\nNama Menu : {nama}\nHarga Menu : RP.{harga}")
+            print(f"\nMenu Ke-{jumlah_menu}\nNama Menu : {nama}\nHarga Menu : RP.{harga}")
+            jumlah_menu += 1
+        jumlah_menu = 1
 
 def tambah_menu():
     nama_menu = input("\nMasukkan Nama Menu: ")
@@ -131,7 +135,6 @@ def program():
         password = input("Masukkan Password: ")
         role = login(username,password)
         print("<=====================================>")
-     
 
         if role:
             while True:
@@ -145,7 +148,7 @@ def program():
                     print("| 4. Hapus Menu                |")
                 print("| 5. Kembali                   |")
                 print("<==============================>")
-           
+
                 pilih2 = input("\nMasukkan Pilihan Anda: ")
                 clean()
                 if pilih2 == "1":
