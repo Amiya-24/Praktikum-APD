@@ -30,11 +30,11 @@ def keluar_dari_program():
     exit()
 
 def liat_menu():
+    global jumlah_menu
     if len(menu) == 0:
         print("\nMenu Masih Kosong")
 
     else:
-        global jumlah_menu
         for nama, harga in menu.items():
             print(f"\nMenu Ke-{jumlah_menu}\nNama Menu : {nama}\nHarga Menu : RP.{harga}")
             jumlah_menu += 1
