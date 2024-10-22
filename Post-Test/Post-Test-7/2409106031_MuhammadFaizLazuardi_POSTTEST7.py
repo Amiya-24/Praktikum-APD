@@ -17,6 +17,7 @@ menu = {
 
 jumlah_menu = 1
 log_stat = False
+
 def login(username, password):
     global log_stat
     if username in akun and akun[username]["pw"] == password:
