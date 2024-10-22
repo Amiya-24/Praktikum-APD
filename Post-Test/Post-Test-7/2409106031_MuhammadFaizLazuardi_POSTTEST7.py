@@ -16,24 +16,16 @@ menu = {
 }
 
 jumlah_menu = 1
+log_stat = False
 def login(username, password):
+    global log_stat
     if username in akun and akun[username]["pw"] == password:
         print(f"Login Berhasil, Selamat Datang {username}")
+        log_stat = True
         return akun[username]["role"]
 
     else:
         print("Username Atau Password Anda Salah")
-        while True:
-            ulangi = input("Apakah Anda Ingin Mencoba Ulang (Y/N): ")
-            if ulangi == "Y":
-                username = input("Masukkan Username: ")
-                password = input("Masukkan Password: ")
-                login(username, password)
-            elif ulangi == "N":
-                print("Kembali Ke Menu Utama")
-                break
-            else:
-                print("Input Salah, Pilihan Hanya (Y/N): ")
         return None
 
 def keluar_dari_program():
@@ -108,7 +100,9 @@ def hapus_menu():
             print("\nNama Tidak Ditemukan")
 
 def kembali_ke_menu():
+    global log_stat
     print("\nKembali Ke Halaman Utama")
+    log_stat = False
 
 def tampilan_menu_utama():
     print("""
@@ -146,6 +140,22 @@ def program():
         password = input("Masukkan Password: ")
         role = login(username,password)
         print("<=====================================>")
+        while log_stat is False:
+            ulangi = input("Apakah Anda Ingin Mencoba Ulang (Y/N): ")
+            if ulangi == "Y":
+                clean()
+                print("<=============== LOGIN ===============>")
+                username = input("Masukkan Username: ")
+                password = input("Masukkan Password: ")
+                role = login(username, password)
+                print("<=====================================>")
+            elif ulangi == "N":
+                clean()
+                print("Kembali Ke Menu Utama")
+                break
+            else:
+                clean()
+                print("Input Salah, Pilihan Hanya (Y/N): ")
 
         if role:
             while True:
