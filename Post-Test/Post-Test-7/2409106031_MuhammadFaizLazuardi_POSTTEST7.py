@@ -23,6 +23,17 @@ def login(username, password):
 
     else:
         print("Username Atau Password Anda Salah")
+        while True:
+            ulangi = input("Apakah Anda Ingin Mencoba Ulang (Y/N): ")
+            if ulangi == "Y":
+                username = input("Masukkan Username: ")
+                password = input("Masukkan Password: ")
+                login(username, password)
+            elif ulangi == "N":
+                print("Kembali Ke Menu Utama")
+                break
+            else:
+                print("Input Salah, Pilihan Hanya (Y/N): ")
         return None
 
 def keluar_dari_program():
@@ -134,17 +145,6 @@ def program():
         username = input("Masukkan Username: ")
         password = input("Masukkan Password: ")
         role = login(username,password)
-        while True:
-            ulangi = input("Apakah Anda Ingin Mencoba Ulang (Y/N): ")
-            if ulangi == "Y":
-                username = input("Masukkan Username: ")
-                password = input("Masukkan Password: ")
-                login(username, password)
-            elif ulangi == "N":
-                print("Anda Memilih Untuk")
-                break
-            else:
-                print("Input Salah, Pilihan Hanya (Y/N): ")
         print("<=====================================>")
 
         if role:
