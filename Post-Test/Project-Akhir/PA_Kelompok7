@@ -1,0 +1,23 @@
+import csv
+import os
+
+def clear():
+    os.system("cls")
+
+def liat_menu():
+    try:
+        with open('menu.csv', mode='r') as file:
+            baca = csv.reader(file)
+            lines = list(baca)
+            if lines:
+                for index, line in enumerate(lines):
+                    print(f"Menu Ke-{index+1}:")
+                    print(f"Nama Menu  : {line[0]}")
+                    print(f"Harga Menu : {line[1]}")
+            else:
+                print("Data kosong.")
+
+    except FileNotFoundError:
+        print("Data Tidak Ditemukan, Tambahkan Data terlebih dahulu.")
+
+liat_menu()
