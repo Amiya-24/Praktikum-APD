@@ -1,28 +1,4 @@
-import csv
 import os
 
 def clear():
     os.system("cls")
-
-def liat_menu():
-    try:
-        with open("menu.csv", "r") as file:
-            reader = csv.reader(file)
-            lines = list(reader)
-            if lines:
-                for index, line in enumerate(lines):
-                    print(f"Menu Ke-{index+1}:")
-                    print(f"Nama Menu  : {line[0]}")
-                    print(f"Harga Menu : {line[1]}\n")
-            else:
-                print("Data kosong")
-
-    except FileNotFoundError:
-        print("Data Tidak Ditemukan, Tambahkan Data terlebih dahulu.")
-
-def tambah_menu(nama_menu, harga_menu):
-    with open("menu.csv", "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow([nama_menu, harga_menu])
-
-def ubah_menu(index, nama_menu, harga_menu):
