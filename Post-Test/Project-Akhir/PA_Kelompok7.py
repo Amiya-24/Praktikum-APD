@@ -10,15 +10,6 @@ akun = {
     "admin" : {"pw" : "admin123", "role" : "ADMIN"}
 }
 
-menu = {
-    "ayam" : 100,
-    "bebek" : 110,
-    "lele" : 125
-}
-
-jumlah_menu = 1
-log_stat = False
-
 def login(username, password):
     global log_stat
     if username in akun and akun[username]["pw"] == password:
@@ -36,7 +27,7 @@ def keluar_dari_program():
 
 def liat_menu():
     try:
-        with open("menu.csv", "r") as file:
+        with open("./Post-Test/Project-Akhir/menu.csv", "r") as file:
             reader = csv.reader(file)
             lines = list(reader)
             if lines:
@@ -53,36 +44,33 @@ Harga Menu : {line[1]}
         print("File Tidak Ditemukan")
 
 def tambah_menu(nama_menu, harga_menu):
-    with open("menu.csv", "a", newline='') as file:
+    with open("./Post-Test/Project-Akhir/menu.csv", "a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([nama_menu, harga_menu])
-        # print("Menu Berhasil Ditambahkan")
 
 def ubah_menu(index, menu_baru, harga_baru):
-    with open("menu.csv", "r") as file:
+    with open("./Post-Test/Project-Akhir/menu.csv", "r") as file:
         lines = list(csv.reader(file))
 
     if index >= 0 and index < len(lines):
         lines[index][0] = menu_baru
         lines[index][1] = harga_baru
-        with open("menu.csv", "w", newline='') as file:
+        with open("./Post-Test/Project-Akhir/menu.csv", "w", newline='') as file:
             writer = csv.writer(file)
             writer.writerows(lines)
 
 def hapus_menu(index):
-    with open("menu.csv", "r") as file:
+    with open("./Post-Test/Project-Akhir/menu.csv", "r") as file:
         lines = list(csv.reader(file))
 
     if index >= 0 and index < len(lines):
         del lines[index]
-        with open("menu.csv", "w", newline='') as file:
+        with open("./Post-Test/Project-Akhir/menu.csv", "w", newline='') as file:
             writer = csv.writer(file)
             writer.writerows(lines)
 
 def kembali_ke_menu():
-    global log_stat
     print("\nKembali Ke Halaman Utama")
-    log_stat = False
 
 def tampilan_menu_utama():
     print("""
