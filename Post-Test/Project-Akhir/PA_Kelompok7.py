@@ -52,6 +52,69 @@ def keluar_dari_program():
     print("\nTerima Kasih Telah Datang")
     exit()
 
+def lihat_pesanan():
+    try:
+        with open("./Post-Test/Project-Akhir/pesanan.csv", "r") as file:
+            reader = csv.reader(file)
+            lines = list(reader)
+
+            if lines:
+                for index, line in lines:
+                    print(f"""
+Pesanan Ke-{index + 1}
+Nama Menu: {line[0]} 
+Jumlah Pesanan: {line[1]}
+""")
+            else:
+                print("Tidak Ada Pesanan")
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
+
+def tambah_pesanan(nama_menu, jumlah_pesanan):
+    try:
+        with open("./Post-Test/Project-Akhir/pesanan.csv", "a", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([nama_menu, jumlah_pesanan])
+            print("Pesanan Berhasil Ditambahkan")
+
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
+
+def ubah_pesanan(index, nama_menu, jumlah_pesanan):
+    try:
+        with open("./Post-Test/Project-Akhir/pesanan.csv", "r") as file:
+            lines = list(csv.reader(file))
+
+            if 0 <= index < len(lines):
+                lines[index][0] = nama_menu
+                lines[index][1] = jumlah_pesanan
+                with open("./Post-Test/Project-Akhir/pesanan.csv", "w", newline='') as file:
+                    writer = csv.writer(file)
+                    writer.writerows(lines)
+                    print("Pesanan Berhasil Diubah")
+            else:
+                print("Pilihan Tidak Valid")
+
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
+
+def hapus_pesanan(index):
+    try:
+        with open("./Post-Test/Project-Akhir/pesanan.csv", "r") as file:
+            lines = list(csv.reader(file))
+
+        if 0 <= index < len(lines):
+            del lines[index]
+            with open("./Post-Test/Project-Akhir/pesanan.csv", "w", newline='') as file:
+                writer = csv.writer(file)
+                writer.writerows(lines)
+                print("Pesanan Berhasil Dihapus")
+        else:
+            print("Pilihan Tidak Valid")
+    
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
+
 def liat_menu():
     try:
         with open("./Post-Test/Project-Akhir/menu.csv", "r") as file:
@@ -92,7 +155,7 @@ def ubah_menu(index, menu_baru, harga_baru):
             with open("./Post-Test/Project-Akhir/menu.csv", "w", newline='') as file:
                 writer = csv.writer(file)
                 writer.writerows(lines)
-            print("Menu Berhasil Diubah")
+                print("Menu Berhasil Diubah")
 
         else:
             print("Pilihan Tidak Valid")
@@ -176,6 +239,7 @@ def program():
         password = input("Masukkan Password: ")
         role = login(username,password)
         print("<=====================================>")
+
         if role == "ADMIN":
             while True:
                 menu_admin()
@@ -232,6 +296,69 @@ def program():
 
                 else:
                     print("\nPilihan Invalid")
+
+        else:
+            while True:
+                menu_pengunjung()
+                pilih2 = input("\nMasukkan Pilihan Anda: ")
+                clean()
+
+                if pilih2 == "1":
+                    print("<========== DAFTAR MENU ==========>")
+                    liat_menu()
+                    print("\n<=================================>")
+                
+                elif pilih2 == "2":
+                    print("<========== MENAMBAHKAN PESANAN ==========>")
+                    liat_menu()
+                    try:
+                        index_pesanan = int(input("Masukkan Nomor Menu Yang Ingin Dipesan: ")) - 1
+                        try:
+                            jumlah_pesanan = int(input("Masukkan Jumlah Pesanan: "))
+                            print("Pesanan Berhasil Ditambahkan")
+                            tambah_pesanan(index_pesanan,jumlah_pesanan)
+
+                        except ValueError:
+                            print("Jumlah Pesanan harus berupa angka")
+                
+                    except ValueError:
+                        print("Input Tidak Valid")
+                
+                elif pilih2 == "3":
+                    print("<========== MENGUBAH PESANAN ==========>")
+                    liat_menu()
+                    try:
+                        index_pesanan = int(input("Masukkan Nomor Menu Yang Ingin Diubah: ")) - 1
+                        index_baru = int(input("Masukkan Nomor Menu Baru: ")) - 1
+                        jumlah_pesanan = int(input("Masukkan Jumlah Pesanan: "))
+                        ubah_pesanan(index_pesanan, index_baru, jumlah_pesanan)
+
+                    except ValueError:
+                        print("Jumlah Pesanan harus berupa angka")
+                
+                elif pilih2 == "4":
+                    print("<========== MENGHAPUS PESANAN ==========>")
+                    liat_menu()
+                    try:
+                        index_pesanan = int(input("Masukkan Nomor Menu Yang Ingin Dihapus: ")) - 1
+                        hapus_pesanan(index_pesanan)
+                        
+
+                    except ValueError:
+                        print("Input Tidak Valid")
+
+                elif pilih2 == "5":
+                    print("<========== LIHAT PESANAN ==========>")
+                    lihat_pesanan()
+                    print("\n<=================================>")
+                
+                elif pilih2 == "6":
+                    kembali_ke_menu()
+                    break
+                
+                else:
+                    print("\nPilihan Invalid")
+
 
     elif pilih1 == "3":
         clean()
