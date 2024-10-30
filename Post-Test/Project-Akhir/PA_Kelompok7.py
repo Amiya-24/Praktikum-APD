@@ -11,7 +11,6 @@ def register(username, password, role):
         with open("./Post-Test/Project-Akhir/akun.csv", "a", newline='') as file:
             writer = csv.writer(file)
             writer.writerow([username, password, role])
-            print("Pendaftaran Berhasil")
 
     except FileNotFoundError:
         print("File Tidak Ditemukan")
@@ -102,15 +101,9 @@ def program():
         clean()
         print("<========== REGISTER ==========>")
         username_baru = input("Masukkan Username Baru: ")
-        register(username_baru, password_baru, role_baru)
-        if username:
-            print("Nama Akun Sudah Terdaftar!")
-
-        else:
-            role_baru = "pengunjung"
-            password_baru = input("Masukkan Password Baru: ")
-            akun[username_baru] = {"pw" : password_baru, "role" : role_baru}
-            print("Register Berhasil!")
+        password_baru = input("Masukkan Password Baru: ")
+        role_baru = "pengunjung"
+        register(username_baru,password_baru,role_baru)        
         print("<==============================>")
 
     elif pilih1 == "2":
