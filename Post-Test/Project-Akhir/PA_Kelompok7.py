@@ -6,19 +6,30 @@ def clean():
 
 clean()
 
-akun = {
-    "admin" : {"pw" : "admin123", "role" : "ADMIN"}
-}
+def register(username, password, role):
+    try:
+        with open("./Post-Test/Project-Akhir/akun.csv", "a", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([username, password, role])
+            print("Pendaftaran Berhasil")
+
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
 
 def login(username, password):
-    global log_stat
-    if username in akun and akun[username]["pw"] == password:
-        print(f"Login Berhasil, Selamat Datang {username}")
-        log_stat = True
-        return akun[username]["role"]
+    try:
+        with open("./Post-Test/Project-Akhir/akun.csv", "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] == username and row[1] == password:
+                    print("Login Berhasil")
+                    return row[2]
 
-    else:
-        print("Username Atau Password Anda Salah")
+            print("Username atau Password Salah")
+            return None
+        
+    except FileNotFoundError:
+        print("File Tidak Ditemukan")
         return None
 
 def keluar_dari_program():
@@ -91,7 +102,8 @@ def program():
         clean()
         print("<========== REGISTER ==========>")
         username_baru = input("Masukkan Username Baru: ")
-        if username_baru in akun:
+        register(username_baru, password_baru, role_baru)
+        if username:
             print("Nama Akun Sudah Terdaftar!")
 
         else:
