@@ -7,4 +7,4 @@ Nama : Muhammad Faiz Lazuardi (Ketua)
 <br>Nim : 2409106034
 <br>
 <br>Nama : Rangga Aditya Rahman
-<br>Nim :24009106044
+<br>Nim : 24009106044
