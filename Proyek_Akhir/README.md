@@ -1,4 +1,3 @@
-# Praktikum-APD
 # Proyek Akhir
 # Anggota Kelompok 7
 Nama : Muhammad Faiz Lazuardi (Ketua)
