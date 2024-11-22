@@ -103,7 +103,7 @@ def table_pesanan():
     table.add_column("Jumlah Pesanan", style="yellow")
     
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             mark = False
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
             
@@ -139,7 +139,7 @@ def table_akun() :
     table.add_column("No.Hp", style="yellow")
     table.add_column("Tanggal Lahir", style="red")
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             mark = False
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
             
@@ -173,7 +173,7 @@ def table_menu():
     table.add_column("Harga", style="bold green")
 
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             mark = False
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
             
@@ -217,7 +217,7 @@ def loading():
 # Fungsi ini digunakan untuk mengecek username untuk menentukan username apakah sudah terdaftar atau belum
 def cek_username(username):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             reader = csv.reader(file) # sebagai variable untuk membaca file external
 
             for row in reader:
@@ -234,7 +234,7 @@ def cek_username(username):
 # Fungsi ini digunakan untuk melakukan Register Pengunjung pada program
 def register(username, password, nama, alamat, no_hp, tanggal_lahir, role = "Pengunjung"):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
             writer = csv.writer(file) # 'writer' digunakan sebagai variable 
             writer.writerow([username, password, nama, alamat, no_hp, tanggal_lahir, role])
             print("Register Berhasil")
@@ -253,7 +253,7 @@ def login(username, password):
             return
         
         else:
-            with open("./Proyek_Akhir/data/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
                 reader = csv.reader(file) # 'reader' sebagai variable untuk membaca file external
                 
                 for row in reader:
@@ -292,7 +292,7 @@ def keluar_dari_program():
 # Fungsi ini digunakan untuk menambahkan pesanan pada program Role Pengunjung
 def tambah_pesanan(username, nama_menu, jumlah_pesanan):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             reader = list(csv.reader(file))   
                    
             if 0 <= nama_menu < len(reader):
@@ -305,7 +305,7 @@ def tambah_pesanan(username, nama_menu, jumlah_pesanan):
         pesanan_ada = False
         pesanan = []
         try: # dicoba terlebih dahulu
-            with open("./Proyek_Akhir/data/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
                 reader = csv.reader(file) # sebagai variable untuk membaca file external
                 
                 for row in reader:
@@ -324,7 +324,7 @@ def tambah_pesanan(username, nama_menu, jumlah_pesanan):
         if not pesanan_ada:
             pesanan.append([username, nama_menu, str(jumlah_pesanan)])
 
-        with open("./Proyek_Akhir/data/pesanan.csv", "w", newline='') as file:
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "w", newline='') as file:
             writer = csv.writer(file) # 'writer' digunakan sebagai variable 
             writer.writerows(pesanan)
 
@@ -339,18 +339,18 @@ def tambah_pesanan(username, nama_menu, jumlah_pesanan):
 # Fungsi ini digunakan untuk mengubah pesanan pada program Khusus Role Pengunjung
 def ubah_pesanan(index, nama_menu, jumlah_pesanan):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
             if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user  
                 lines[index][2] = jumlah_pesanan
 
-                with open("./Proyek_Akhir/data/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+                with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
                     lines2 = list(csv.reader(file))
                     menubaru = lines2[nama_menu][0]
                     lines[index][1] = menubaru
 
-                with open("./Proyek_Akhir/data/pesanan.csv", "w", newline='') as file:
+                with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "w", newline='') as file:
                     writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                     writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
                     print("Pesanan Berhasil Diubah")
@@ -364,13 +364,13 @@ def ubah_pesanan(index, nama_menu, jumlah_pesanan):
 # Fungsi ini digunakan untuk menghapus pesanan pada program Khusus Role Pengunjung
 def hapus_pesanan(index):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
         if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user  
             del lines[index]
             
-            with open("./Proyek_Akhir/data/pesanan.csv", "w", newline='') as file:
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/pesanan.csv", "w", newline='') as file:
                 writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                 writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
                 print("Pesanan Berhasil Dihapus")
@@ -387,7 +387,7 @@ def hapus_pesanan(index):
 # Fungsi ini digunakan untuk menambahkan menu baru pada table menu. Fitur ini hanya khusus digunakan oleh Role Admin
 def tambah_menu(nama_menu, harga_menu):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/menu.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
             writer = csv.writer(file) # 'writer' digunakan sebagai variable 
             writer.writerow([nama_menu, harga_menu]) #'writerow' digunakan untuk menulis row baru pada file csv
             print("Menu Berhasil Ditambahkan")
@@ -398,14 +398,14 @@ def tambah_menu(nama_menu, harga_menu):
 # Fungsi ini digunakan untuk mengubah menu pada table menu yang sudah ada. Fitur ini hanya khusus digunakan oleh Role Admin
 def ubah_menu(index, menu_baru, harga_baru):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
         if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user 
             lines[index][0] = menu_baru
             lines[index][1] = harga_baru
             
-            with open("./Proyek_Akhir/data/menu.csv", "w", newline='') as file: # 'with open' digunakan untuk membuka file external
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "w", newline='') as file: # 'with open' digunakan untuk membuka file external
                 writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                 writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
                 print("Menu Berhasil Diubah")
@@ -420,13 +420,13 @@ def ubah_menu(index, menu_baru, harga_baru):
 # Fungsi ini digunakan untuk menghapus salah satu menu pada table menu yang sudah ada. Fitur ini hanya khusus digunakan oleh Role Admin
 def hapus_menu(index):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
         if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user 
             del lines[index]
             
-            with open("./Proyek_Akhir/data/menu.csv", "w", newline='') as file: # 'with open' digunakan untuk membuka file external
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/menu.csv", "w", newline='') as file: # 'with open' digunakan untuk membuka file external
                 writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                 writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
             print("Menu Berhasil Dihapus")
@@ -444,7 +444,7 @@ def hapus_menu(index):
 # Fungsi ini digunakan untuk menambah berbagai data sebagai akun baru pada table akun. Fitur ini hanya khusus digunakan oleh Role Admin
 def tambah_data(username_baru, password_baru, nama_baru, alamat_baru, no_hp_baru, tanggal_lahir_baru, role_baru = "Pengunjung"):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "a", newline='') as file: # 'with open' digunakan untuk membuka file external
             writer = csv.writer(file) # 'writer' digunakan sebagai variable 
             writer.writerow([username_baru, password_baru, nama_baru, alamat_baru, no_hp_baru, tanggal_lahir_baru, role_baru])
             print("Data Berhasil Ditambahkan")
@@ -455,7 +455,7 @@ def tambah_data(username_baru, password_baru, nama_baru, alamat_baru, no_hp_baru
 # Fungsi ini digunakan untuk mengubah berbagai data pada salah satu akun yang ada di dalam table akun. Fitur ini hanya khusus digunakan oleh Role Admin
 def ubah_data(index, username_baru, password_baru, nama_baru, alamat_baru, no_hp_baru, tanggal_lahir_baru, role_baru = "Pengunjung"):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
         if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user 
@@ -467,7 +467,7 @@ def ubah_data(index, username_baru, password_baru, nama_baru, alamat_baru, no_hp
             lines[index][5] = tanggal_lahir_baru
             lines[index][6] = role_baru
             
-            with open("./Proyek_Akhir/data/akun.csv", "w", newline='') as file:
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "w", newline='') as file:
                 writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                 writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
                 print("Data Berhasil Diubah")
@@ -481,12 +481,12 @@ def ubah_data(index, username_baru, password_baru, nama_baru, alamat_baru, no_hp
 # Fungsi ini digunakan untuk menghapus salah satu akun yang ada di dalam table akun. Fitur ini hanya khusus digunakan oleh Role Admin
 def hapus_data(index):
     try: # dicoba terlebih dahulu
-        with open("./Proyek_Akhir/data/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
+        with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "r") as file: # 'with open' digunakan untuk membuka file external
             lines = list(csv.reader(file)) # 'lines' digunakan sebagai variable
 
         if 0 <= index < len(lines): # Fungsi ini digunakan untuk mengecek index yang di input user 
             del lines[index]
-            with open("./Proyek_Akhir/data/akun.csv", "w", newline='') as file:
+            with open("./Proyek_Akhir/A2_K7_Manajemen_Produk_Dan_Pemesanan_Warung_Makan_ABL/akun.csv", "w", newline='') as file:
                 writer = csv.writer(file) # 'writer' digunakan sebagai variable 
                 writer.writerows(lines) # 'writer.writerow(lines)' digunakan untuk mengganti data pada lines yang dipilih
             print("Data Berhasil Dihapus")
